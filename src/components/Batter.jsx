@@ -8,6 +8,9 @@ export default function Batter() {
   //playerA
   const [foursA,setFoursA]=useState(0);
   const [sixesA,setSixessA]=useState(0);
+  const handleDots=()=>{
+    setBalls(balls+1);
+  }
   const handleASingles = () => {
     setRuns(runs + 1);
     setBalls(balls + 1);
@@ -55,7 +58,14 @@ export default function Batter() {
       <div className="p-1 space-y-2">
         <div className="flex justify-between items-center">
           <div className="text-[#1866db] font-semibold">
-            Abhishek Sharma <span className="playerA">*</span>
+            {" "}
+            <a
+              href="https://www.cricbuzz.com/profiles/12086/abhishek-sharma"
+              target="_blank"
+            >
+              Abhishek Sharma
+            </a>
+            <span className="playerA">*</span>
           </div>
 
           <div className="grid grid-cols-5 w-42 text-right">
@@ -65,7 +75,7 @@ export default function Batter() {
             </h4>
             <h4>{foursA}</h4>
             <h4>{sixesA}</h4>
-            <h4 className=" pl-5">
+            <h4 className=" ml-2">
               {balls == 0 ? 0 : ((runs / balls) * 100).toFixed(2)}
             </h4>
           </div>
@@ -73,22 +83,35 @@ export default function Batter() {
 
         <div className="flex justify-between">
           <div className="text-[#1866db] font-semibold">
-            Subhman Gill <span className="playerB hidden">*</span>
+            {" "}
+            <a
+              href="https://www.cricbuzz.com/profiles/11808/shubman-gill"
+              target="_blank"
+            >
+              Subhman Gill
+            </a>
+            <span className="playerB hidden">*</span>
           </div>
           <div className="grid grid-cols-5 w-42 text-right">
             <h4>0</h4>
             <h4>0</h4>
             <h4>0</h4>
             <h4>0</h4>
-            <h4>0.00</h4>
+            <h4>0</h4>
           </div>
         </div>
       </div>
 
       <section className="flex items-center gap-3">
         <span className="font-medium">Hitting:</span>
-        <button className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition cursor-pointer">
+        <button className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 transition cursor-pointer">
           W
+        </button>
+        <button
+          onClick={handleDots}
+          className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 transition cursor-pointer"
+        >
+          Dot
         </button>
         <button
           onClick={handleASingles}
@@ -115,6 +138,44 @@ export default function Batter() {
           6
         </button>
       </section>
+      {/* Bowling sections */}
+      <div className="">
+        <div className="p-2 bg-gray-200 my-3 rounded-md flex justify-between">
+          <div>Bowler</div>
+          <div className="grid grid-cols-5 w-42 text-right">
+            <h4>O</h4>
+            <h4>M</h4>
+            <h4>R</h4>
+            <h4>W</h4>
+            <h4>ECO</h4>
+          </div>
+        </div>
+        <div className="p-1 space-y-2">
+          <div className="flex justify-between items-center">
+            <div className="text-[#1866db] font-semibold">
+              <a
+                href="https://www.cricbuzz.com/profiles/6258/josh-hazlewood"
+                target="_blank"
+              >
+                Josh Hazlewood
+              </a>
+              <span className="playerA"></span>
+            </div>
+
+            <div className="grid grid-cols-5 w-42 text-right">
+              <h4>
+                {parseInt(balls / 6)}.{balls % 6}
+              </h4>
+              <h4>0</h4>
+              <h4>{runs}</h4>
+              <h4>W</h4>
+              <h4 className="ml-1">
+                {balls == 0 ? 0 : (runs / (balls / 6)).toFixed(2)}
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
