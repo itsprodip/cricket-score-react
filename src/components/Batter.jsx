@@ -14,7 +14,7 @@ export default function Batter() {
   const handleASingles = () => {
     setRuns(runs + 1);
     setBalls(balls + 1);
- 
+    
   };
   const handleADoubles=()=>{
     setRuns(runs+2);
@@ -176,6 +176,12 @@ export default function Batter() {
           </div>
         </div>
       </div>
+      {/* Recent history */}
+      <section >
+        <span className="text-gray-500">Recent :</span>
+      </section>
+      
     </div>
   );
 }
+

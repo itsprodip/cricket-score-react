@@ -10,8 +10,9 @@ const App = () => {
       <span className="border-b-3 text-green-500 font-bold">Live</span>
       <Batter></Batter>
       <Bowler></Bowler>
+ 
     </div>
-  );
+  )
 };
 
 export default App;
