@@ -4,35 +4,36 @@ export default function Batter() {
   //Overall
   const [runs, setRuns] = useState(0);
   const [balls, setBalls] = useState(0);
-
+  const [recentHit, setRecentHit] = useState("");
   //playerA
-  const [foursA,setFoursA]=useState(0);
-  const [sixesA,setSixessA]=useState(0);
-  const handleDots=()=>{
-    setBalls(balls+1);
-  }
+  const [foursA, setFoursA] = useState(0);
+  const [sixesA, setSixessA] = useState(0);
+  const handleDots = () => {
+    setBalls(balls + 1);
+    setRecentHit(recentHit + "0 ");
+  };
   const handleASingles = () => {
     setRuns(runs + 1);
     setBalls(balls + 1);
-    
+    setRecentHit(recentHit + "1 ");
   };
-  const handleADoubles=()=>{
-    setRuns(runs+2);
-    setBalls(balls+1);
-
-  }
-  const handleAFours=()=>{
-    setRuns(runs+4);
-    setBalls(balls+1);
-    setFoursA(foursA+1);
-
-  }
-  const handleASixes=()=>{
-    setRuns(runs+6);
-    setBalls(balls+1);
-    setSixessA(sixesA+1);
-    
-  }
+  const handleADoubles = () => {
+    setRuns(runs + 2);
+    setBalls(balls + 1);
+    setRecentHit(recentHit + "2 ");
+  };
+  const handleAFours = () => {
+    setRuns(runs + 4);
+    setBalls(balls + 1);
+    setFoursA(foursA + 1);
+    setRecentHit(recentHit + "4 ");
+  };
+  const handleASixes = () => {
+    setRuns(runs + 6);
+    setBalls(balls + 1);
+    setSixessA(sixesA + 1);
+    setRecentHit(recentHit + "6 ");
+  };
 
   return (
     <div>
@@ -177,11 +178,12 @@ export default function Batter() {
         </div>
       </div>
       {/* Recent history */}
-      <section >
-        <span className="text-gray-500">Recent :</span>
+      <section>
+        <span className="text-gray-500">Recent : {recentHit}</span>
       </section>
-      
     </div>
   );
 }
-
+const Hit = () => {
+  return <h1>Score: 1</h1>;
+};
