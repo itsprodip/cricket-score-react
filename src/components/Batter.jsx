@@ -4,13 +4,23 @@ export default function Batter() {
   //Overall
   const [runs, setRuns] = useState(0);
   const [balls, setBalls] = useState(0);
+  const [wickets, setWickets] = useState(0);
   const [recentHit, setRecentHit] = useState("");
+  const [runScore,setRunScore]=useState("");
   //playerA
   const [foursA, setFoursA] = useState(0);
   const [sixesA, setSixessA] = useState(0);
+
+  const handleWickets = () => {
+    setWickets(wickets + 1);
+    setBalls(balls + 1);
+    setRecentHit(recentHit + "W ");
+  };
   const handleDots = () => {
     setBalls(balls + 1);
     setRecentHit(recentHit + "0 ");
+    setRunScore("Josh Hazlewood to Abhishek Sharma no run");
+
   };
   const handleASingles = () => {
     setRuns(runs + 1);
@@ -41,7 +51,7 @@ export default function Batter() {
         <span className="font-bold text-2xl">Ind</span>
         <span className="font-bold text-2xl">{runs}</span>
         <span className="font-bold text-2xl">-</span>
-        <span className="font-bold text-2xl">0</span>
+        <span className="font-bold text-2xl">{wickets}</span>
         <span className="font-bold text-sm">
           ({parseInt(balls / 6)}.{balls % 6})
         </span>
@@ -102,10 +112,12 @@ export default function Batter() {
           </div>
         </div>
       </div>
-
       <section className="flex items-center gap-3">
         <span className="font-medium">Hitting:</span>
-        <button className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 transition cursor-pointer">
+        <button
+          onClick={handleWickets}
+          className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 transition cursor-pointer"
+        >
           W
         </button>
         <button
@@ -169,7 +181,7 @@ export default function Batter() {
               </h4>
               <h4>0</h4>
               <h4>{runs}</h4>
-              <h4>W</h4>
+              <h4>{wickets}</h4>
               <h4 className="ml-1">
                 {balls == 0 ? 0 : (runs / (balls / 6)).toFixed(2)}
               </h4>
@@ -181,9 +193,18 @@ export default function Batter() {
       <section>
         <span className="text-gray-500">Recent : {recentHit}</span>
       </section>
+      {/* Live scoreboard section */}
+      <section>
+        <h1 className="border-b border-gray-400 my-2"></h1>
+        <div className="flex gap-5">
+          <div>
+            <h4>
+              {parseInt(balls / 6)}.{balls % 6}
+            </h4>
+          </div>
+          <div>{runScore}</div>
+        </div>
+      </section>
     </div>
   );
 }
-const Hit = () => {
-  return <h1>Score: 1</h1>;
-};
